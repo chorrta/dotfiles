@@ -42,4 +42,10 @@ tabbar tabbox button{
 
 tabbar tabbox label {
   font-size: 12px;
+  color: #ebdbb2;
 }
+
+tabbar tabbox tab:active   { background-color: #d65d0e; }
+tabbar tabbox tab:checked   { background-color: #d65d0e; }
+tabbar tabbox tab:selected   { background-color: #d65d0e; }
+tabbar tabbox tab:hover   { background-color: #d65d0e; }
