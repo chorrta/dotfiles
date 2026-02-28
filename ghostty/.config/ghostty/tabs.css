@@ -1,0 +1,45 @@
+/*
+
+{
+  margin: -8px;
+  margin-left: -6px;
+  margin-right: -6px;
+}
+headerbar button {
+  min-height: 8px;
+  min-width: 8px;
+}
+*/
+/*
+tabbox {
+  margin: 0;
+  padding: 0;
+}
+*/
+
+tabbar {
+  margin: 0;
+  padding: 0;
+}
+
+
+tabbar tabbox {
+ /* transform: translateY(-8px); */
+  margin: -16px;
+  padding: 0;
+}
+
+tabbar tabbox tab {
+  margin: -16px;
+  padding: 0;
+}
+
+
+tabbar tabbox button{
+  min-height: 12px;
+  min-width:  12px;
+}
+
+tabbar tabbox label {
+  font-size: 12px;
+}
