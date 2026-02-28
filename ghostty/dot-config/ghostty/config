@@ -61,3 +61,5 @@ gtk-titlebar-style = native
 gtk-toolbar-style = flat
 gtk-wide-tabs = false
 gtk-custom-css = "~/.config/ghostty/tabs.css"
+keybind=alt+h=previous_tab
+keybind=alt+l=next_tab
