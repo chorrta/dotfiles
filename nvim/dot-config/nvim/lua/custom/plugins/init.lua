@@ -23,4 +23,9 @@ return {
   require 'custom.plugins.guess-indent',
   require 'custom.plugins.neogit',
   require 'custom.plugins.feline',
+  require 'custom.plugins.vimtex',
+  require 'custom.plugins.luasnip',
+  require('luasnip.loaders.from_lua').lazy_load { paths = '~/.config/nvim/luasnippets/' },
+  require 'custom.plugins.nvimsurround',
+  require 'custom.plugins.wrapping',
 }

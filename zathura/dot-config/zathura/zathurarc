@@ -21,9 +21,7 @@ set notification-fg             "rgba(184,187,38,1)"   # bright:green
 
 set completion-bg               "rgba(80,73,69,1)"     # bg2
 set completion-fg               "rgba(235,219,178,1)"  # fg
-set completion-group-bg         "rgba(60,56,54,1)"     # bg1
-set completion-group-fg         "rgba(146,131,116,1)"  # gray
-set completion-highlight-bg     "rgba(131,165,152,1)"  # bright:blue
+set completion-group-bg         "rgba(60,56,54,1)"     # bg1 set completion-group-fg         "rgba(146,131,116,1)"  # gray set completion-highlight-bg     "rgba(131,165,152,1)"  # bright:blue
 set completion-highlight-fg     "rgba(80,73,69,1)"     # bg2
 
 # Define the color in index mode
