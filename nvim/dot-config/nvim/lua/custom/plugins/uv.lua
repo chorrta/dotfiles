@@ -5,5 +5,8 @@ return {
   },
   opts = {
     picker_integration = true,
+    keymaps = {
+      commands = false,
+    },
   },
 }
