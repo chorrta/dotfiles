@@ -13,7 +13,7 @@ return {
     indent = { enabled = false },
     scope = { enabled = true },
     input = { enabled = true },
-    gh = { enabled = true },
+    gh = { enabled = false },
     git = { enabled = true },
     notifier = {
       enabled = true,
@@ -22,7 +22,7 @@ return {
     picker = { enabled = true },
     quickfile = { enabled = true },
     scroll = { enabled = true },
-    statuscolumn = { enabled = true },
+    statuscolumn = { enabled = false },
     words = { enabled = true },
     toggle = { enabled = true },
     rename = { enabled = true },
