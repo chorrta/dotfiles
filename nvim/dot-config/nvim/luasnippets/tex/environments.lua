@@ -15,7 +15,7 @@ local tex_utils = helpers.tex_utils
 
 return {
   s(
-    { trig = 'env', desc = 'Start a tex environment.' },
+    { trig = 'be', desc = 'Start a tex environment.' },
     fmta(
       [[
         \begin{<>}
@@ -25,4 +25,16 @@ return {
       { i(1), i(0), rep(1) }
     )
   ),
+  s(
+    { trig = 'align', desc = 'Start align environment.' },
+    fmta(
+      [[
+        \begin{align}
+            <>
+        \end{align}
+]],
+      { i(0) }
+    )
+  ),
+  s({ trig = 'inline', desc = 'Start an inline math environment.' }, fmta([[$<>$ <>]], { i { 1 }, i { 2 } })),
 }

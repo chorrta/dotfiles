@@ -4,12 +4,17 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    animate = { enabled = false },
+    profiler = { enabled = true },
     bigfile = { enabled = true },
     dashboard = { enabled = true },
-    explorer = { enabled = true },
+    debug = { enabled = true },
+    explorer = { enabled = false },
     indent = { enabled = false },
     scope = { enabled = true },
     input = { enabled = true },
+    gh = { enabled = true },
+    git = { enabled = true },
     notifier = {
       enabled = true,
       timeout = 3000,
@@ -20,6 +25,8 @@ return {
     statuscolumn = { enabled = true },
     words = { enabled = true },
     toggle = { enabled = true },
+    rename = { enabled = true },
+    image = { enabled = true },
     styles = {
       notification = {
         wo = { wrap = true }, -- Wrap notifications
