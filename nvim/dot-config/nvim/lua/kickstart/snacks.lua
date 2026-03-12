@@ -4,6 +4,7 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    input = { enabled = true },
     animate = { enabled = false },
     profiler = { enabled = true },
     bigfile = { enabled = true },
@@ -12,9 +13,9 @@ return {
     explorer = { enabled = false },
     indent = { enabled = false },
     scope = { enabled = true },
-    input = { enabled = true },
     gh = { enabled = false },
     git = { enabled = true },
+    lazygit = { enabled = false },
     notifier = {
       enabled = true,
       timeout = 3000,
@@ -22,11 +23,63 @@ return {
     picker = { enabled = true },
     quickfile = { enabled = true },
     scroll = { enabled = true },
-    statuscolumn = { enabled = false },
+    statuscolumn = { enabled = true },
     words = { enabled = true },
     toggle = { enabled = true },
     rename = { enabled = true },
-    image = { enabled = true },
+    image = {
+      enabled = true,
+      doc = {
+        enabled = true,
+        inline = true,
+        float = true,
+        -- Set to `true`, to conceal the image text when rendering inline.
+        -- (experimental)
+        ---@param lang string tree-sitter language
+        ---@param type snacks.image.Type image type
+        conceal = function(lang, type)
+          -- only conceal math expressions
+          local mode = vim.api.nvim_get_mode()['mode']
+          return type == 'math' and mode ~= 'i'
+        end,
+        max_width = 100,
+        max_height = 60,
+      },
+      math = {
+        enabled = true, -- enable math expression rendering
+        -- in the templates below, `${header}` comes from any section in your document,
+        -- between a start/end header comment. Comment syntax is language-specific.
+        -- * start comment: `// snacks: header start`
+        -- * end comment:   `// snacks: header end`
+        typst = {
+          tpl = [[
+            #set page(width: auto, height: auto, margin: (x: 2pt, y: 2pt))
+            #show math.equation.where(block: false): set text(top-edge: "bounds", bottom-edge: "bounds")
+            #set text(size: 12pt, fill: rgb("${color}"))
+            ${header}
+            ${content}]],
+        },
+        latex = {
+          font_size = 'Large', -- see https://www.sascha-frank.com/latex-font-size.html
+          -- for latex documents, the doc packages are included automatically,
+          -- but you can add more packages here. Useful for markdown documents.
+          packages = { 'amsmath', 'amssymb', 'amsfonts', 'amscd', 'mathtools' },
+          tpl = [[
+            \documentclass[preview,border=0pt,varwidth,12pt]{standalone}
+            \usepackage{${packages}}
+            \begin{document}
+            ${header}
+            { \${font_size} \selectfont
+              \color[HTML]{${color}}
+            ${content}}
+            \end{document}]],
+        },
+      },
+    },
+    win = { enabled = true },
+    zen = { enabled = false },
+    zoom = { enabled = false },
+    terminal = { enabled = true },
     styles = {
       notification = {
         wo = { wrap = true }, -- Wrap notifications
@@ -444,20 +497,6 @@ return {
     },
     -- Other
     {
-      '<leader>z',
-      function()
-        Snacks.zen()
-      end,
-      desc = 'Toggle Zen Mode',
-    },
-    {
-      '<leader>Z',
-      function()
-        Snacks.zen.zoom()
-      end,
-      desc = 'Toggle Zoom',
-    },
-    {
       '<leader>.',
       function()
         Snacks.scratch()
@@ -499,13 +538,6 @@ return {
       end,
       desc = 'Git Browse',
       mode = { 'n', 'v' },
-    },
-    {
-      '<leader>gg',
-      function()
-        Snacks.lazygit()
-      end,
-      desc = 'Lazygit',
     },
     {
       '<leader>un',

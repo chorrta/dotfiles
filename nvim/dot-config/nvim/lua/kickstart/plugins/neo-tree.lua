@@ -11,24 +11,41 @@ return {
   },
   lazy = false,
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '\\', ':Neotree reveal float<CR>', desc = 'NeoTree reveal', silent = true },
+    { '|', ':Neotree reveal buffers float<CR>', desc = 'NeoTree reveal buffers', silent = true },
   },
   opts = {
-    opts = function(_, opts)
-      local function on_move(data)
-        Snacks.rename.on_rename_file(data.source, data.destination)
-      end
-      local events = require 'neo-tree.events'
-      opts.event_handlers = opts.event_handlers or {}
-      vim.list_extend(opts.event_handlers, {
-        { event = events.FILE_MOVED, handler = on_move },
-        { event = events.FILE_RENAMED, handler = on_move },
-      })
-    end,
     filesystem = {
       window = {
         mappings = {
           ['\\'] = 'close_window',
+          ['<tab>'] = function(state)
+            local node = state.tree:get_node()
+            if require('neo-tree.utils').is_expandable(node) then
+              state.commands['toggle_node'](state)
+            else
+              state.commands['open'](state)
+              vim.cmd 'Neotree reveal'
+            end
+          end,
+        },
+      },
+      function(_, opts)
+        local function on_move(data)
+          Snacks.rename.on_rename_file(data.source, data.destination)
+        end
+        local events = require 'neo-tree.events'
+        opts.event_handlers = opts.event_handlers or {}
+        vim.list_extend(opts.event_handlers, {
+          { event = events.FILE_MOVED, handler = on_move },
+          { event = events.FILE_RENAMED, handler = on_move },
+        })
+      end,
+    },
+    buffers = {
+      window = {
+        mappings = {
+          ['|'] = 'close_window',
         },
       },
     },
