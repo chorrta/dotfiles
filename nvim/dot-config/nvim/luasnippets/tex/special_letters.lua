@@ -1,10 +1,17 @@
--- Include this `in_mathzone` function at the start of a snippets file...
-local function in_math()
-  -- The `in_mathzone` function requires the VimTeX plugin
-  return vim.fn['vimtex#syntax#in_mathzone']() == 1
-end
--- Then include `condition = in_mathzone` to any snippet you want to
--- expand only in math contexts.
+local ls = require 'luasnip'
+local s = ls.snippet
+local sn = ls.snippet_node
+local t = ls.text_node
+local i = ls.insert_node
+local f = ls.function_node
+local d = ls.dynamic_node
+local fmt = require('luasnip.extras.fmt').fmt
+local fmta = require('luasnip.extras.fmt').fmta
+local rep = require('luasnip.extras').rep
+
+local helpers = require 'helper_functions.luasnip'
+local get_visual = helpers.get_visual
+local tex_utils = helpers.tex_utils
 
 return {
   -- Lower case greek letters
@@ -58,12 +65,12 @@ return {
   s({ trig = ';O', snippetType = 'autosnippet' }, { t '\\Omega' }),
 
   -- Derivatives
-  s({ trig = '^prime', show_condition = in_math, wordTrig = false }, { t '^{\\prime}' }),
-  s({ trig = '^pprime', show_condition = in_math, wordTrig = false }, { t '^{\\prime\\prime}' }),
-  s({ trig = '^ppprime', show_condition = in_math, wordTrig = false }, { t '^{\\prime\\prime\\prime}' }),
-  s({ trig = '^pppprime', show_condition = in_math, wordTrig = false }, { t '^{\\prime\\prime\\prime\\prime}' }),
+  s({ trig = '^prime', show_condition = tex_utils.in_mathzone, wordTrig = false }, { t '^{\\prime}' }),
+  s({ trig = '^pprime', show_condition = tex_utils.in_mathzone, wordTrig = false }, { t '^{\\prime\\prime}' }),
+  s({ trig = '^ppprime', show_condition = tex_utils.in_mathzone, wordTrig = false }, { t '^{\\prime\\prime\\prime}' }),
+  s({ trig = '^pppprime', show_condition = tex_utils.in_mathzone, wordTrig = false }, { t '^{\\prime\\prime\\prime\\prime}' }),
 
   -- Subscript superscript
-  s({ trig = '_', show_condition = in_math, wordTrig = false }, fmta([[_{<>}<>]], { i(1), i(0) })),
-  s({ trig = '^', show_condition = in_math, wordTrig = false }, fmta([[^{<>}<>]], { i(1), i(0) })),
+  s({ trig = '_', show_condition = tex_utils.in_mathzone, wordTrig = false }, fmta([[_{<>}<>]], { i(1), i(0) })),
+  s({ trig = '^', show_condition = tex_utils.in_mathzone, wordTrig = false }, fmta([[^{<>}<>]], { i(1), i(0) })),
 }

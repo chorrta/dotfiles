@@ -45,6 +45,17 @@ return {
         max_width = 100,
         max_height = 60,
       },
+      wo = {
+        wrap = false,
+        number = true,
+        relativenumber = true,
+        cursorcolumn = false,
+        signcolumn = 'no',
+        foldcolumn = '0',
+        list = false,
+        spell = false,
+        statuscolumn = '',
+      },
       math = {
         enabled = true, -- enable math expression rendering
         -- in the templates below, `${header}` comes from any section in your document,
@@ -79,7 +90,7 @@ return {
     win = { enabled = true },
     zen = { enabled = false },
     zoom = { enabled = false },
-    terminal = { enabled = true },
+    terminal = { enabled = false },
     styles = {
       notification = {
         wo = { wrap = true }, -- Wrap notifications

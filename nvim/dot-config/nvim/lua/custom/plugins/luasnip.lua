@@ -11,7 +11,7 @@ return {
     -- Luasnip config
     vim.cmd [[
     " Use Tab to expand and jump through snippets
-    imap <silent><expr> <C-y> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-y>'
+    imap <silent><expr> <C-e> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-e>'
     imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
 
     imap <silent><expr> <C-n> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<C-n>'
