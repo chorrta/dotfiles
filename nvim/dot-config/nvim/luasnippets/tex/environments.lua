@@ -27,17 +27,35 @@ return {
     )
   ),
   s(
-    { trig = 'align', desc = 'Start align environment.' },
+    { trig = 'al', desc = 'Start align environment.' },
     fmta(
       [[
         \begin{align}
             <>
         \end{align}
+        <>
 ]],
-      { i(0) }
+      { i(1), i(0) }
     )
   ),
-  s({ trig = 'mm', desc = 'Start an inline math environment.' }, fmta([[$<>$ <>]], { i(1), i(0) }), { condition = tex_utils.in_text }),
+  s(
+    { trig = 'ga', desc = 'Start gather environment.' },
+    fmta(
+      [[
+        \begin{gather}
+            <>
+        \end{gather}
+        <>
+]],
+      { i(1), i(0) }
+    )
+  ),
+
+  s(
+    { trig = 'mm', desc = 'Start an inline math environment.', snippetType = 'autosnippet' },
+    fmta([[$<>$ <>]], { i(1), i(0) }),
+    { condition = tex_utils.in_text }
+  ),
   s(
     { trig = 'fig', desc = 'Add simple figure' },
     fmta(
@@ -98,18 +116,16 @@ return {
           [[
 \begin{figure}[H]
   \centering
-  \begin{subfigure}{0.48\textwidth}[t]
+  \begin{subfigure}{0.48\textwidth}
     \centering
     \includegraphics[width=\linewidth]{figures/<>}
     \caption{<>}
   \end{subfigure}
-
-  \begin{subfigure}{0.48\textwidth}[t]
+  \begin{subfigure}{0.48\textwidth}
     \centering
     \includegraphics[width=\linewidth]{figures/<>}
     \caption{<>}
   \end{subfigure}
-
   \caption{<>}
   \label{fig:<>}
 \end{figure}
@@ -131,23 +147,21 @@ return {
           [[
 \begin{figure}[H]
   \centering
-
-  \begin{subfigure}{0.32\textwidth}[t]
+  \begin{subfigure}{0.32\textwidth}
     \centering
     \includegraphics[width=\linewidth]{figures/<>}
     \caption{<>}
   \end{subfigure}
-  \begin{subfigure}{0.32\textwidth}[t]
+  \begin{subfigure}{0.32\textwidth}
     \centering
     \includegraphics[width=\linewidth]{figures/<>}
     \caption{<>}
   \end{subfigure}
-  \begin{subfigure}{0.32\textwidth}[t]
+  \begin{subfigure}{0.32\textwidth}
     \centering
     \includegraphics[width=\linewidth]{figures/<>}
     \caption{<>}
   \end{subfigure}
-
   \caption{<>}
   \label{fig:<>}
 \end{figure}
@@ -166,5 +180,36 @@ return {
       ),
     }),
     { condition = tex_utils.in_text }
+  ),
+  -- Sections
+  s(
+    { trig = '\\sec', desc = 'Start a section.', snippetType = 'autosnippet' },
+    fmta(
+      [[
+        \section{<>}
+        <>
+]],
+      { i(1, 'Section'), i(0) }
+    )
+  ),
+  s(
+    { trig = '\\ssec', desc = 'Start a subsection.', snippetType = 'autosnippet' },
+    fmta(
+      [[
+        \subsection{<>}
+        <>
+]],
+      { i(1, 'Subsection'), i(0) }
+    )
+  ),
+  s(
+    { trig = '\\sssec', desc = 'Start a subsection.', snippetType = 'autosnippet' },
+    fmta(
+      [[
+        \subsubsection{<>}
+        <>
+]],
+      { i(1, 'Subsection'), i(0) }
+    )
   ),
 }

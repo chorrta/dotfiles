@@ -30,7 +30,7 @@ return {
     image = {
       enabled = true,
       doc = {
-        enabled = true,
+        enabled = false,
         inline = true,
         float = true,
         -- Set to `true`, to conceal the image text when rendering inline.
