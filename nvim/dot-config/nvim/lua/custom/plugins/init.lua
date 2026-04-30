@@ -24,7 +24,6 @@ return {
   require 'custom.plugins.neogit',
   require 'custom.plugins.feline',
   require 'custom.plugins.vimtex',
-  require 'custom.plugins.luasnip',
   require('luasnip.loaders.from_lua').lazy_load { paths = '~/.config/nvim/luasnippets/' },
   --require('luasnip.loaders.from_vscode').lazy_load(),
   require 'custom.plugins.nvimsurround',
