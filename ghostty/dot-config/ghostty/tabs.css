@@ -18,34 +18,43 @@ tabbox {
 */
 
 tabbar {
-  margin: 0;
+  margin: 0px;
   padding: 0;
 }
 
-
 tabbar tabbox {
- /* transform: translateY(-8px); */
-  margin: -16px;
-  padding: 0;
+  transform: translateY(-8px);
+  margin: -8px;
+  padding: 0px;
 }
 
 tabbar tabbox tab {
-  margin: -16px;
+  margin: 0px;
   padding: 0;
 }
 
-
-tabbar tabbox button{
-  min-height: 12px;
-  min-width:  12px;
+tabbar tabbox button {
+  transform: translateY(8px);
+  min-height: 0px;
+  min-width: 0px;
 }
 
 tabbar tabbox label {
+  margin: 0px;
+  transform: translateY(8px);
   font-size: 12px;
   color: #ebdbb2;
 }
 
-tabbar tabbox tab:active   { background-color: #d65d0e; }
-tabbar tabbox tab:checked   { background-color: #d65d0e; }
-tabbar tabbox tab:selected   { background-color: #d65d0e; }
-tabbar tabbox tab:hover   { background-color: #d65d0e; }
+tabbar tabbox tab:active {
+  background-color: #d65d0e;
+}
+tabbar tabbox tab:checked {
+  background-color: #d65d0e;
+}
+tabbar tabbox tab:selected {
+  background-color: #d65d0e;
+}
+tabbar tabbox tab:hover {
+  background-color: #d65d0e;
+}
